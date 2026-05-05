@@ -244,33 +244,33 @@ The geometric intuition is direct: **pyramids touch only at their apexes**. Thei
 Each module is physically organized into a set of sub-projects or sub-packages, one per layer variant. The canonical anatomy of a module is:
 
 ```
-module-xxx-infra              Shared types: DTOs, constants, interfaces,
+module-xyz-infra              Shared types: DTOs, constants, interfaces,
                               entity definitions, query objects, references.
                               No dependency on any other layer.
 
-module-xxx-dal-api            Repository interfaces. No implementation.
+module-xyz-dal-api            Repository interfaces. No implementation.
 
-module-xxx-dal-jpa            Relational/ORM implementation of dal-api.
+module-xyz-dal-jpa            Relational/ORM implementation of dal-api.
                               Contains storage entities and ORM repositories.
 
-module-xxx-dal-mongo          Document store implementation of dal-api.
+module-xyz-dal-mongo          Document store implementation of dal-api.
                               Contains document entities and document repositories.
 
-module-xxx-service-api        The module facade interface. The published contract.
+module-xyz-service-api        The module facade interface. The published contract.
 
-module-xxx-service-impl       Local implementation of the facade.
+module-xyz-service-impl       Local implementation of the facade.
                               Contains domain services, business services,
                               and interceptors.
 
-module-xxx-service-rest-cli   REST client proxy implementing service-api.
+module-xyz-service-rest-cli   REST client proxy implementing service-api.
                               Used when this module is deployed as a remote service.
 
-module-xxx-service-grpc-cli   gRPC client proxy implementing service-api.
+module-xyz-service-grpc-cli   gRPC client proxy implementing service-api.
                               Alternative remote consumption variant.
 
-module-xxx-ws-rest            REST controllers exposing the module facade.
+module-xyz-ws-rest            REST controllers exposing the module facade.
 
-module-xxx-ws-grpc            gRPC handlers exposing the module facade.
+module-xyz-ws-grpc            gRPC handlers exposing the module facade.
 ```
 
 *Figure 3 — Canonical module anatomy. Not all sub-projects need to exist for every module.*
@@ -795,10 +795,10 @@ A typical assembly structure contains two levels:
 **Layer bundles** — intermediate artifacts that aggregate the dependencies of a specific layer across all included modules:
 
 ```
-app-base-dal-jpa      aggregates all module-xxx-dal-jpa dependencies
-app-base-dal-mongo    aggregates all module-xxx-dal-mongo dependencies
-app-base-service      aggregates all module-xxx-service-impl dependencies
-app-base-ws           aggregates all module-xxx-ws-rest dependencies
+app-base-dal-jpa      aggregates all module-xyz-dal-jpa dependencies
+app-base-dal-mongo    aggregates all module-xyz-dal-mongo dependencies
+app-base-service      aggregates all module-xyz-service-impl dependencies
+app-base-ws           aggregates all module-xyz-ws-rest dependencies
 ```
 
 Layer bundles are reusable across packaging variants. They encapsulate the "which modules and which DAL/WS variant" decisions independently of the "what packaging" decision.
