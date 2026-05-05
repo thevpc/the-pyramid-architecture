@@ -106,6 +106,10 @@ The intersection of these two axes defines a grid of components, each with a pre
 
 Convergence Rule: For any component C at layer Lₙ, the set of components C directly depends upon must be a non-empty subset of layer Lₙ₋₁, and C must not depend on any component at layer Lₖ where k < n−1 or k = n.
 
+![The Pyramid](images/pyramid-01.png)
+
+![The Pyramid](images/pyramid-02.png)
+
 ```
           [Single Entry Point]              ← Apex (API / UI)
                   ↑
@@ -1290,4 +1294,4 @@ This pattern has been validated in systems managing ['ERP', 'Transport Informati
 - **Stability**: Concepts stable; examples illustrative
 - **Feedback**: Contributions welcome via [link/process]
 - **Citation**: If referencing this architecture, please cite as:  
-  *Thevpc. (2026). The Pyramid Architecture White Paper (Draft v0.2).*
+  *Dr. Taha BEN SALAH. (2026). The Pyramid Architecture White Paper v1.0.*

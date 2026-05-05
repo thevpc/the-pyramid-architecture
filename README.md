@@ -20,3 +20,8 @@ A modular, agile, and scalable software architecture pattern for modern products
 ## License
 Documentation: CC-BY-SA 4.0  
 Code examples: MIT
+
+
+##Citation## 
+If referencing this architecture, please cite as:  
+  *Taha BEN SALAH. (2026). The Pyramid Architecture White Paper v1.0.*
