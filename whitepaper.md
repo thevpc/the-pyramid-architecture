@@ -297,32 +297,32 @@ Each module is physically organized as a set of sub-projects (Maven modules, Gra
 The canonical sub-project set:
 
 ```
-module-xxx-infra              Shared types: domain entities, DTOs,
+module-xyz-infra              Shared types: domain entities, DTOs,
                               query objects, reference types, constants.
                               No dependency on any other layer.
 
-module-xxx-dal-api            Repository and external-service interfaces.
+module-xyz-dal-api            Repository and external-service interfaces.
                               No implementation.
 
-module-xxx-dal-jpa            ORM/relational implementation of dal-api.
-module-xxx-dal-mongo          Document store implementation of dal-api.
-module-xxx-dal-http           HTTP client implementation (external services).
-module-xxx-dal-messaging      Message publisher/consumer implementation.
-module-xxx-dal-cache          Cache client implementation.
+module-xyz-dal-jpa            ORM/relational implementation of dal-api.
+module-xyz-dal-mongo          Document store implementation of dal-api.
+module-xyz-dal-http           HTTP client implementation (external services).
+module-xyz-dal-messaging      Message publisher/consumer implementation.
+module-xyz-dal-cache          Cache client implementation.
 
-module-xxx-service-api        The module facade interface. The published contract.
+module-xyz-service-api        The module facade interface. The published contract.
 
-module-xxx-service-impl       Local implementation of the facade.
+module-xyz-service-impl       Local implementation of the facade.
                               Contains domain services, business services,
                               interceptors, and validators.
 
-module-xxx-service-rest-cli   REST client proxy implementing service-api.
+module-xyz-service-rest-cli   REST client proxy implementing service-api.
                               Used when this module runs as a remote service.
 
-module-xxx-service-grpc-cli   gRPC client proxy implementing service-api.
+module-xyz-service-grpc-cli   gRPC client proxy implementing service-api.
 
-module-xxx-ws-rest            REST controllers exposing the module facade.
-module-xxx-ws-grpc            gRPC handlers exposing the module facade.
+module-xyz-ws-rest            REST controllers exposing the module facade.
+module-xyz-ws-grpc            gRPC handlers exposing the module facade.
 ```
 
 Not all sub-projects need to exist for every module. The anatomy defines the full possibility space; each module instantiates the subset it needs.
@@ -637,10 +637,10 @@ A typical assembly structure has two levels:
 **Layer bundles** — intermediate artifacts aggregating the dependencies of a specific layer variant across all included modules:
 
 ```
-app-base-dal-jpa      all module-xxx-dal-jpa dependencies
-app-base-dal-mongo    all module-xxx-dal-mongo dependencies
-app-base-service      all module-xxx-service-impl dependencies
-app-base-ws           all module-xxx-ws-rest dependencies
+app-base-dal-jpa      all module-*-dal-jpa dependencies
+app-base-dal-mongo    all module-*-dal-mongo dependencies
+app-base-service      all module-*-service-impl dependencies
+app-base-ws           all module-*-ws-rest dependencies
 ```
 
 Layer bundles are reusable across packaging variants. They encapsulate the "which modules, which DAL variant, which WS variant" decisions independently of the "what packaging" decision.
