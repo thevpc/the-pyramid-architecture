@@ -1,0 +1,68 @@
+@startuml Pyramid Transaction Flow
+skinparam sequenceMessageAlign center
+skinparam participantStyle rectangle
+skinparam noteStyle handwritten
+autonumber
+
+participant "Module A\nService" as SvcA
+participant "Repository A\n(DAL)" as RepoA
+participant "Module B\nFacade" as FacadeB
+participant "Module B\nService" as SvcB
+participant "Repository B\n(DAL)" as RepoB
+participant "Interceptor\n(AFTER_ADD)" as Interceptor
+participant "Module C\n(async handler)" as ModC
+
+== Phase 1: Local Transaction in Module A ==
+
+SvcA -> RepoA: persist(EntityA)
+activate RepoA
+note right of RepoA: Local transaction\nstarted
+RepoA --> SvcA: success
+deactivate RepoA
+
+SvcA -> SvcA: commit / rollback\n(local only)
+note right of SvcA: Transaction boundary:\nModule A only
+
+== Phase 2: Cross-Module Call (No Shared Transaction) ==
+
+SvcA -> FacadeB: callBusinessOperation(params)
+note over SvcA,FacadeB: Apex-to-apex communication\nvia published contract
+
+activate FacadeB
+FacadeB -> SvcB: delegate()
+activate SvcB
+
+SvcB -> RepoB: persist(EntityB)
+activate RepoB
+note right of RepoB: Separate transaction\nstarted (independent)
+RepoB --> SvcB: success
+deactivate RepoB
+
+SvcB -> SvcB: commit\n(Module B transaction)
+note right of SvcB: No distributed\ntransaction coordinator
+
+SvcB --> FacadeB: result
+deactivate SvcB
+FacadeB --> SvcA: result
+deactivate FacadeB
+
+== Phase 3: Interceptor Side Effect (Async) ==
+
+SvcA -> Interceptor: trigger AFTER_ADD\n(EntityA persisted)
+activate Interceptor
+note right of Interceptor: Runs after local commit\nFailure does NOT rollback Module A
+
+Interceptor -> ModC: async event\n(e.g., message queue)
+deactivate Interceptor
+note over Interceptor,ModC: Asynchronous,\nbest-effort delivery
+
+ModC -> ModC: process side effect\n(independent transaction)
+note right of ModC: Module C transaction\nfully independent
+
+activate ModC
+ModC --> ModC: complete / retry / compensate
+deactivate ModC
+
+
+
+@enduml

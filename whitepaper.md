@@ -1399,6 +1399,11 @@ Operations spanning module boundaries do not share a transaction. If a primary o
 
 **Mitigation:** saga patterns via interceptors handle the practical majority of cross-module consistency scenarios. When ACID atomicity is genuinely required across what appear to be module boundaries, the correct resolution is almost always to reconsider the boundary — two operations that must always be atomic likely belong in the same module.
 
+
+![Transaction boundaries](images/transaction.png)
+* Figure 8 — Transaction boundaries and interceptor-based side effects. Each module maintains an independent transaction context; cross-module calls do not share transactions. The interceptor system enables saga-like consistency patterns without distributed transaction coordination.
+t
+
 ### Generator Dependency
 
 The code generator concentrates significant architectural leverage. Generator bugs propagate to all generated code. Template changes require regeneration of all affected artifacts.
