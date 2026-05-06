@@ -1,3 +1,37 @@
+---
+title: "The Pyramid Architecture"
+subtitle: "Whitepaper — v1.0"
+author: "Dr. Taha BEN SALAH"
+date: "2026 - v1.0"
+toc: true
+toc-depth: 3
+toc-title: "Table of Contents"
+geometry: "margin=2.5cm"
+fontsize: 11pt
+linestretch: 1.3
+colorlinks: true
+linkcolor: blue
+urlcolor: blue
+toccolor: black
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{colortbl}
+  - \definecolor{tableheadcolor}{RGB}{230,230,230}
+  - \renewcommand{\arraystretch}{1.4}
+  - \setlength{\tabcolsep}{8pt}
+  - \AtBeginEnvironment{longtable}{\small}
+  - \AtBeginEnvironment{tabular}{\small}
+  - \usepackage{tabularx}
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyhead[L]{\textit{The Pyramid Architecture}}
+  - \fancyhead[R]{\thepage}
+  - \fancyfoot[C]{\textit{v1.0 - 2026}}
+...
+---
+
 # The Pyramid Architecture
 ### A Modular, Agile and Scalable Software Architecture for Modern Products
 
@@ -9,11 +43,11 @@
 
 **Solution:** The Pyramid Architecture enforces modular decomposition with strict layering and explicit communication rules, enabling:
 
-- ✅ Independent module development, testing, and deployment
-- ✅ Mechanical migration from modulith to microservices — and back
-- ✅ Swappable infrastructure via a formal extension/driver model
-- ✅ Built-in readiness for AI-agent integration
-- ✅ A unified mental model expressed through four architectural faces
+- (yes) Independent module development, testing, and deployment
+- (yes) Mechanical migration from modulith to microservices — and back
+- (yes) Swappable infrastructure via a formal extension/driver model
+- (yes) Built-in readiness for AI-agent integration
+- (yes) A unified mental model expressed through four architectural faces
 
 **Best suited for:** ERP platforms, multi-tenant SaaS, regulated environments requiring data sovereignty, and teams prioritizing disciplined incremental evolution over big-bang rewrites.
 
@@ -25,37 +59,8 @@
 >
 > This document describes the Pyramid Architecture as a pattern. Code examples, annotations, and directory structures are illustrative of one reference implementation (Java / Spring Boot) and should not be read as prescriptive requirements. The architecture defines structural contracts, not implementation syntax. It can be realized in any language, framework, or build system that supports modular decomposition and dependency inversion.
 
----
-
-## Table of Contents
-
-**Part I — The Architecture**
-
-1. [Introduction](#1-introduction)
-2. [The Four Faces — Overview](#2-the-four-faces--overview)
-3. [Face 1 — Structure: Modules, Layers and Isolation](#3-face-1--structure-modules-layers-and-isolation)
-4. [Face 2 — Interaction: Extensions, Drivers and Interceptors](#4-face-2--interaction-extensions-drivers-and-interceptors)
-5. [Face 3 — Elasticity: Deployment Models](#5-face-3--elasticity-deployment-models)
-6. [Face 4 — Convergence: Automation and AI-First Systems](#6-face-4--convergence-automation-and-ai-first-systems)
-
-**Part II — Cross-Cutting Concerns**
-
-7. [Data Management](#7-data-management)
-8. [Services](#8-services)
-9. [Infrastructure and Tooling](#9-infrastructure-and-tooling)
-
-**Part III — Positioning**
-
-10. [What the Pyramid Architecture Contributes](#10-what-the-pyramid-architecture-contributes)
-11. [Relationship to Established Patterns](#11-relationship-to-established-patterns)
-12. [Known Limitations and Trade-offs](#12-known-limitations-and-trade-offs)
-13. [Conclusion](#13-conclusion)
-
----
 
 # Part I — The Architecture
-
----
 
 ## 1. Introduction
 
@@ -1223,8 +1228,16 @@ In build systems with explicit dependency declarations (Maven, Gradle), the numb
 </dependency>
 
 <!-- [GENERATED:pyramid] DO NOT EDIT BELOW -->
-<dependency><groupId>com.example</groupId><artifactId>module-banks-dal-jpa</artifactId><version>1.0.0</version></dependency>
-<dependency><groupId>com.example</groupId><artifactId>module-invoices-dal-jpa</artifactId><version>1.0.0</version></dependency>
+<dependency>
+    <groupId>com.example</groupId>
+    <artifactId>module-banks-dal-jpa</artifactId>
+    <version>1.0.0</version>
+</dependency>
+<dependency>
+    <groupId>com.example</groupId>
+    <artifactId>module-invoices-dal-jpa</artifactId>
+    <version>1.0.0</version>
+</dependency>
 <!-- [/GENERATED:pyramid] -->
 ```
 
@@ -1313,17 +1326,17 @@ The Pyramid Architecture's position is that **premature process separation is a 
 
 | Property | Pyramid | Hexagonal | Clean Arch | Microservices | Monolith |
 |---|---|---|---|---|---|
-| Business decomposition | ✅ Modules | ⚠️ Implicit | ⚠️ Implicit | ✅ Services | ❌ None |
-| Layer separation | ✅ Enforced at build | ✅ Enforced by convention | ✅ Enforced by convention | ⚠️ Per-service | ⚠️ Optional |
-| Deployment flexibility | ✅ M/P spectrum | ❌ Not addressed | ❌ Not addressed | ❌ Fixed (1/P) | ❌ Fixed (M/1) |
-| Modulith→µService path | ✅ Mechanical | ❌ Manual refactor | ❌ Manual refactor | N/A | ❌ Rewrite |
-| Code generation | ✅ First-class enforcer | ❌ Not prescribed | ❌ Not prescribed | ⚠️ Ad-hoc | ❌ Rare |
-| Cross-cutting concerns | ✅ Active extensions + drivers | ✅ Passive ports + adapters | ⚠️ Use cases only | ⚠️ Sidecar pattern | ⚠️ Shared library |
-| Compile-time enforcement | ✅ Sub-project deps | ⚠️ Package conventions | ⚠️ Package conventions | ✅ Process boundary | ❌ None |
-| Data segregation | ✅ Explicit, technology-agnostic | ⚠️ Implicit | ⚠️ Implicit | ✅ Per-service | ❌ Shared |
-| Cross-module consistency | ✅ Interceptor sagas | ❌ Undefined | ❌ Undefined | ⚠️ Sagas (complex) | ✅ Local transactions |
-| Multi-tenant composition | ✅ Native (manifest + drivers) | ❌ Not addressed | ❌ Not addressed | ⚠️ Ad-hoc | ❌ Typically absent |
-| AI-first readiness | ✅ Emergent | ⚠️ Partial | ⚠️ Partial | ⚠️ Partial | ❌ None |
+| Business decomposition | (yes) Modules | (~) Implicit | (~) Implicit | (yes) Services | (no) None |
+| Layer separation | (yes) Enforced at build | (yes) Enforced by convention | (yes) Enforced by convention | (~) Per-service | (~) Optional |
+| Deployment flexibility | (yes) M/P spectrum | (no) Not addressed | (no) Not addressed | (no) Fixed (1/P) | (no) Fixed (M/1) |
+| Modulith→µService path | (yes) Mechanical | (no) Manual refactor | (no) Manual refactor | N/A | (no) Rewrite |
+| Code generation | (yes) First-class enforcer | (no) Not prescribed | (no) Not prescribed | (~) Ad-hoc | (no) Rare |
+| Cross-cutting concerns | (yes) Active extensions + drivers | (yes) Passive ports + adapters | (~) Use cases only | (~) Sidecar pattern | (~) Shared library |
+| Compile-time enforcement | (yes) Sub-project deps | (~) Package conventions | (~) Package conventions | (yes) Process boundary | (no) None |
+| Data segregation | (yes) Explicit, technology-agnostic | (~) Implicit | (~) Implicit | (yes) Per-service | (no) Shared |
+| Cross-module consistency | (yes) Interceptor sagas | (no) Undefined | (no) Undefined | (~) Sagas (complex) | (yes) Local transactions |
+| Multi-tenant composition | (yes) Native (manifest + drivers) | (no) Not addressed | (no) Not addressed | (~) Ad-hoc | (no) Typically absent |
+| AI-first readiness | (yes) Emergent | (~) Partial | (~) Partial | (~) Partial | (no) None |
 
 ---
 
@@ -1374,7 +1387,7 @@ The architecture is particularly well-suited to systems that must be simple now 
 | **Face 1: Structure** | Are module boundaries clear and enforced at compile time? | Proceed to Face 2 | Introduce sub-project isolation; define facade contracts |
 | **Face 2: Interaction** | Can infrastructure choices be swapped without code changes? | Proceed to Face 3 | Introduce extensions/drivers; refactor cross-cutting logic into interceptors |
 | **Face 3: Elasticity** | Could any module be extracted to its own process tomorrow? | Proceed to Face 4 | Ensure service-api is the only inter-module dependency; add remote client slots |
-| **Face 4: Convergence** | Could an AI agent reliably discover and invoke your system's capabilities? | ✅ Full Pyramid | Generate tool catalogs from facades; expose lifecycle events via interceptors |
+| **Face 4: Convergence** | Could an AI agent reliably discover and invoke your system's capabilities? | (yes) Full Pyramid | Generate tool catalogs from facades; expose lifecycle events via interceptors |
 
 ### Migration Path by Starting Point
 
@@ -1410,15 +1423,14 @@ The Single Source of Truth:
 
 ## Document Governance
 
-- **Current version:** 1.0 (draft for review)
+- **Current version:** 1.0
+- **Repository:** https://github.com/thevpc/the-pyramid-architecture
 - **Stability:** Core concepts stable; examples illustrative and subject to refinement
 - **Language:** English primary; French version in preparation for regional distribution
 - **Citation:** If referencing this architecture, please cite as:
-  *Thevpc. (2026). The Pyramid Architecture White Paper 1.0.*
-- **Feedback:** Contributions and corrections welcome
+  *Dr. Taha BEN SALAH (2026). The Pyramid Architecture White Paper (v1.0).*
+- **Feedback:** Contributions and corrections welcome via the GitHub repository
 
 ---
 
-*The Pyramid Architecture — simple today, scalable tomorrow, legible to both humans and agents.*
-
-[https://github.com/thevpc/the-pyramid-architecture](https://github.com/thevpc/the-pyramid-architecture)
+*The Pyramid Architecture v1.0 — simple today, scalable tomorrow, legible to both humans and agents.*

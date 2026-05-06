@@ -1,0 +1,10 @@
+#!/bin/bash
+
+pandoc whitepaper.md -o the-pyramid-architecture-v1.0.pdf \
+  --pdf-engine=xelatex \
+  -V mainfont="DejaVu Sans" \
+  -V "mainfontfallback=Noto Color Emoji" \
+  -V monofont="DejaVu Sans Mono" \
+  -V mathfont="DejaVu Math TeX Gyre" \
+  --syntax-highlighting=tango \
+  --columns=80
