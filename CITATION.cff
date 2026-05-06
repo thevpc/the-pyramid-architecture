@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as follows:"
+authors:
+  - family-names: "Thevpc"
+    given-names: ""
+    orcid: "https://orcid.org/YOUR-ORCID-ID"
+title: "The Pyramid Architecture White Paper"
+version: "1.0.0"
+date-released: 2026-05-06
+url: "https://github.com/thevpc/the-pyramid-architecture"
+repository-code: "https://github.com/thevpc/the-pyramid-architecture"
+license: CC-BY-SA-4.0
+type: report
+abstract: >-
+  The Pyramid Architecture is a software architecture pattern that enforces a clean separation of concerns both at the business domain level and at the technical layer level. It defines a structured decomposition of a system into autonomous, composable modules, each organized into specialized processing layers that converge upward into a single, unified entry point. Built on the principles of Clean Architecture, it introduces concrete constraints and tooling that make it particularly well-suited for iterative product development, startup environments, and systems that must evolve gracefully from a monolith to a microservices deployment.
+keywords:
+  - software architecture
+  - modular monolith
+  - microservices
+  - clean architecture
+  - domain-driven design
+  - code generation
+  - reproducible systems

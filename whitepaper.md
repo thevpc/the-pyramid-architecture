@@ -72,6 +72,8 @@ The name derives from the geometric shape of the composition model: many fine-gr
 
 The Pyramid Architecture is not a replacement for established patterns such as Hexagonal Architecture, Clean Architecture, or Domain-Driven Design. It is a **concrete, opinionated instantiation** of their principles, extended with specific structural rules, deployment mechanics, and tooling guidance that make the principles enforceable rather than aspirational — and that produce, as a natural consequence, a system that AI agents can navigate without additional instrumentation.
 
+The architecture is designed for incremental adoption: see Section 10 for a minimal viable path to get started without rewriting existing systems.
+
 ### A Note on Examples
 
 Throughout this document, code snippets, annotations, and directory structures are drawn from a reference implementation in Java and Spring Boot. These are **illustrative examples** of one way to realize the pattern. The architecture is language- and framework-agnostic. The concepts — modules, layers, facades, interceptors, drivers — map to equivalent constructs in any technology stack that supports modular decomposition and dependency inversion.
@@ -357,6 +359,13 @@ The Pyramid Architecture enforces isolation at three levels:
 **Data isolation** is the most important and most discipline-intensive form. Each module owns its data store exclusively. No other module may directly access another module's data store, regardless of deployment topology. Even when multiple modules are co-deployed against the same database server, each module operates on its own schema, collection namespace, or table prefix. **Two modules in the same process may use entirely different storage technologies** — one JPA against a relational database, another MongoDB against a document store — without any conflict. The database technology boundary does not need to mirror the deployment boundary; it mirrors the data ownership boundary.
 
 Data isolation is what makes the M/P model sound: a module that has never shared its data store with another module can be extracted to its own process without data migration.
+
+> **For Regulated and Safety-Critical Domains**
+> The Pyramid Architecture's explicit module boundaries support:
+> - **Independent certification**: Safety-critical modules can be verified in isolation (DO-178C, IEC 61508)
+> - **Data sovereignty**: Module-level data segregation enables deployment topologies respecting geographic or classification boundaries
+> - **Supply-chain risk control**: Third-party components integrate via drivers, limiting their access surface and simplifying audit
+
 
 ---
 
@@ -1288,6 +1297,40 @@ The extension/driver pattern extends the Ports and Adapters model by making the 
 **Contribution 6: AI-First Readiness as an Emergent Property.**
 The Pyramid Architecture does not add AI support — it discovers that its existing properties (typed facades, observable interceptors, comprehensive audit trails, swappable drivers, single-source-of-truth metadata) are precisely the properties that AI agents need to navigate and operate a system reliably. The tool catalog, the agentic context surface, the action graph, and the BPM integration are not new architectural elements grafted on — they are natural outputs of the existing code generator, applied to existing facades and metadata. A system built on the Pyramid Architecture becomes AI-first by virtue of being well-structured, not by adding AI-specific machinery.
 
+
+> ### Getting Started: Minimal Viable Adoption
+>
+> The Pyramid Architecture is designed for incremental adoption—no big-bang rewrite required.
+>
+> **Phase 1: Prove the pattern (1 module, 2-4 weeks)**
+> - Pick one new feature or bounded context to implement as a Pyramid module
+> - Apply the canonical anatomy: `infra` / `dal-api` / `service-api` / `service-impl` / `ws-rest`
+> - Enforce boundaries via build rules: configure Maven/Gradle to prevent illegal dependencies (e.g., `ws-rest` cannot depend on `dal-jpa`)
+> - Hand-write the facade implementation and one business service; skip code generation initially
+>
+> **Phase 2: Automate the boilerplate (optional, +1-2 weeks)**
+> - Introduce the code generator to produce CRUD services, repository interfaces, and WS controllers
+> - Keep business logic in hand-written classes only (facade impl, services, interceptors)
+> - Regenerate on each entity/facade change; generated code is never manually edited
+>
+> **Phase 3: Extract when needed (operational decision, not code change)**
+> - When a module requires independent scaling, deployment, or team ownership:
+    >   1. Activate its remote client variant (`service-rest-cli`) in the application manifest
+>   2. Deploy the module to its own process (container, VM, serverless function)
+>   3. Update consumer manifests to reference the remote service topology
+> - No code changes in calling modules: the facade interface remains the contract
+>
+> **Key principle**: Architecture is enforced by structure and tooling, not by ceremony. Start small, validate value, then scale the pattern—not the upfront investment.
+>
+> **✅ First-Module Checklist**
+> - [ ] Module name and business boundary defined
+> - [ ] Sub-projects created per canonical anatomy (even if empty)
+> - [ ] Build rules configured to enforce layer dependencies
+> - [ ] Facade interface published in `service-api`
+> - [ ] One hand-written business service implemented
+> - [ ] Manifest entry added to activate the module
+> - [ ] CI pipeline validates dependency rules on each commit
+> - 
 ---
 
 ## 11. Relationship to Established Patterns
