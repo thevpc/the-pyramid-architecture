@@ -26,5 +26,4 @@ Code examples: MIT
 ## Citation
 
 If referencing this architecture, please cite as:  
-*Taha BEN SALAH. (2026). The Pyramid Architecture Whitepaper v1.0.*
-  https://github.com/thevpc/the-pyramid-architecture
+*Taha BEN SALAH (2026). The Pyramid Architecture Whitepaper v1.0 https://github.com/thevpc/the-pyramid-architecture

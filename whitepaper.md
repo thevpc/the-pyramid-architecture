@@ -1,7 +1,7 @@
 ---
 title: "The Pyramid Architecture"
 subtitle: "Whitepaper — v1.0"
-author: "Dr. Taha BEN SALAH"
+author: "Taha BEN SALAH"
 date: "2026 - v1.0"
 toc: true
 toc-depth: 3
@@ -1476,7 +1476,7 @@ The Single Source of Truth:
 - **Stability:** Core concepts stable; examples illustrative and subject to refinement
 - **Language:** English primary; French version in preparation for regional distribution
 - **Citation:** If referencing this architecture, please cite as:
-  *Dr. Taha BEN SALAH (2026). The Pyramid Architecture White Paper (v1.0).*
+  *Taha BEN SALAH (2026). The Pyramid Architecture Whitepaper v1.0 https://github.com/thevpc/the-pyramid-architecture*
 - **Feedback:** Contributions and corrections welcome via the GitHub repository
 
 ---
