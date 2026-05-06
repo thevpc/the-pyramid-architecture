@@ -1298,39 +1298,43 @@ The extension/driver pattern extends the Ports and Adapters model by making the 
 The Pyramid Architecture does not add AI support — it discovers that its existing properties (typed facades, observable interceptors, comprehensive audit trails, swappable drivers, single-source-of-truth metadata) are precisely the properties that AI agents need to navigate and operate a system reliably. The tool catalog, the agentic context surface, the action graph, and the BPM integration are not new architectural elements grafted on — they are natural outputs of the existing code generator, applied to existing facades and metadata. A system built on the Pyramid Architecture becomes AI-first by virtue of being well-structured, not by adding AI-specific machinery.
 
 
-> ### Getting Started: Minimal Viable Adoption
->
-> The Pyramid Architecture is designed for incremental adoption—no big-bang rewrite required.
->
-> **Phase 1: Prove the pattern (1 module, 2-4 weeks)**
-> - Pick one new feature or bounded context to implement as a Pyramid module
-> - Apply the canonical anatomy: `infra` / `dal-api` / `service-api` / `service-impl` / `ws-rest`
-> - Enforce boundaries via build rules: configure Maven/Gradle to prevent illegal dependencies (e.g., `ws-rest` cannot depend on `dal-jpa`)
-> - Hand-write the facade implementation and one business service; skip code generation initially
->
-> **Phase 2: Automate the boilerplate (optional, +1-2 weeks)**
-> - Introduce the code generator to produce CRUD services, repository interfaces, and WS controllers
-> - Keep business logic in hand-written classes only (facade impl, services, interceptors)
-> - Regenerate on each entity/facade change; generated code is never manually edited
->
-> **Phase 3: Extract when needed (operational decision, not code change)**
-> - When a module requires independent scaling, deployment, or team ownership:
-    >   1. Activate its remote client variant (`service-rest-cli`) in the application manifest
->   2. Deploy the module to its own process (container, VM, serverless function)
->   3. Update consumer manifests to reference the remote service topology
-> - No code changes in calling modules: the facade interface remains the contract
->
-> **Key principle**: Architecture is enforced by structure and tooling, not by ceremony. Start small, validate value, then scale the pattern—not the upfront investment.
->
-> **✅ First-Module Checklist**
-> - [ ] Module name and business boundary defined
-> - [ ] Sub-projects created per canonical anatomy (even if empty)
-> - [ ] Build rules configured to enforce layer dependencies
-> - [ ] Facade interface published in `service-api`
-> - [ ] One hand-written business service implemented
-> - [ ] Manifest entry added to activate the module
-> - [ ] CI pipeline validates dependency rules on each commit
-> - 
+### Getting Started: Minimal Viable Adoption
+
+The Pyramid Architecture is designed for incremental adoption—no big-bang rewrite required.
+
+**Phase 1: Prove the pattern (1 module, 2-4 weeks)**
+
+- Pick one new feature or bounded context to implement as a Pyramid module
+- Apply the canonical anatomy: `infra` / `dal-api` / `service-api` / `service-impl` / `ws-rest`
+- Enforce boundaries via build rules: configure Maven/Gradle to prevent illegal dependencies (e.g., `ws-rest` cannot depend on `dal-jpa`)
+- Hand-write the facade implementation and one business service; skip code generation initially
+
+**Phase 2: Automate the boilerplate (optional, +1-2 weeks)**
+
+- Introduce the code generator to produce CRUD services, repository interfaces, and WS controllers
+- Keep business logic in hand-written classes only (facade impl, services, interceptors)
+- Regenerate on each entity/facade change; generated code is never manually edited
+
+**Phase 3: Extract when needed (operational decision, not code change)**
+
+- When a module requires independent scaling, deployment, or team ownership:
+  1. Activate its remote client variant (`service-rest-cli`) in the application manifest
+  2. Deploy the module to its own process (container, VM, serverless function)
+  3. Update consumer manifests to reference the remote service topology
+- No code changes in calling modules: the facade interface remains the contract
+
+**Key principle**: Architecture is enforced by structure and tooling, not by ceremony. Start small, validate value, then scale the pattern—not the upfront investment.
+
+**First-Module Checklist**
+
+- [ ] Module name and business boundary defined
+- [ ] Sub-projects created per canonical anatomy (even if empty)
+- [ ] Build rules configured to enforce layer dependencies
+- [ ] Facade interface published in `service-api`
+- [ ] One hand-written business service implemented
+- [ ] Manifest entry added to activate the module
+- [ ] CI pipeline validates dependency rules on each commit
+
 ---
 
 ## 11. Relationship to Established Patterns
