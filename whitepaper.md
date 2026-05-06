@@ -1420,3 +1420,5 @@ The Single Source of Truth:
 ---
 
 *The Pyramid Architecture — simple today, scalable tomorrow, legible to both humans and agents.*
+
+[https://github.com/thevpc/the-pyramid-architecture](https://github.com/thevpc/the-pyramid-architecture)
