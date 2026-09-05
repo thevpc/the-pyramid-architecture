@@ -1,0 +1,9 @@
+net/thevpc/samples/petstore/core/interceptor/api/InterceptorScope.class
+net/thevpc/samples/petstore/core/service/api/AppCoreModule.class
+net/thevpc/samples/petstore/core/interceptor/api/AppEntityInterceptor.class
+net/thevpc/samples/petstore/core/interceptor/api/EntityInterceptor.class
+net/thevpc/samples/petstore/core/actiongraph/ActionGraph.class
+net/thevpc/samples/petstore/core/interceptor/api/LifecyclePhase.class
+net/thevpc/samples/petstore/core/actiongraph/ActionExecutionResult.class
+net/thevpc/samples/petstore/core/actiongraph/ActionNode.class
+net/thevpc/samples/petstore/core/interceptor/api/InterceptorEvent.class

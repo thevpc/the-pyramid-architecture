@@ -1,0 +1,3 @@
+/home/vpc/xprojects/documents/the-pyramid-architecture/examples/petstore/core/core-dal-jpa/src/main/java/net/thevpc/samples/petstore/core/dal/jpa/entity/JpaAppAuditLogEntity.java
+/home/vpc/xprojects/documents/the-pyramid-architecture/examples/petstore/core/core-dal-jpa/src/main/java/net/thevpc/samples/petstore/core/dal/jpa/repository/JpaAppAuditLogRepositoryImpl.java
+/home/vpc/xprojects/documents/the-pyramid-architecture/examples/petstore/core/core-dal-jpa/src/main/java/net/thevpc/samples/petstore/core/dal/jpa/repository/SpringDataAppAuditLogRepository.java

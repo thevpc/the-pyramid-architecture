@@ -1,0 +1,317 @@
+{
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "PetOrderModule_placeOrder",
+        "description": "Invokes PetOrderModule.placeOrder",
+        "module": "PetOrderModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "order": {
+              "type": "object",
+              "javaType": "Order"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "PetOrderModule_findOrderById",
+        "description": "Invokes PetOrderModule.findOrderById",
+        "module": "PetOrderModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "javaType": "String"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "PetOrderModule_findAllOrders",
+        "description": "Invokes PetOrderModule.findAllOrders",
+        "module": "PetOrderModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "PetOrderModule_findOrdersByStatus",
+        "description": "Invokes PetOrderModule.findOrdersByStatus",
+        "module": "PetOrderModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "object",
+              "javaType": "OrderStatus"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "PetOrderModule_updateOrderStatus",
+        "description": "Invokes PetOrderModule.updateOrderStatus",
+        "module": "PetOrderModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "orderId": {
+              "type": "string",
+              "javaType": "String"
+            },
+            "status": {
+              "type": "object",
+              "javaType": "OrderStatus"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "PetOrderModule_cancelOrder",
+        "description": "Invokes PetOrderModule.cancelOrder",
+        "module": "PetOrderModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "orderId": {
+              "type": "string",
+              "javaType": "String"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "PetCatalogModule_addPet",
+        "description": "Invokes PetCatalogModule.addPet",
+        "module": "PetCatalogModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "pet": {
+              "type": "object",
+              "javaType": "Pet"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "PetCatalogModule_updatePet",
+        "description": "Invokes PetCatalogModule.updatePet",
+        "module": "PetCatalogModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "pet": {
+              "type": "object",
+              "javaType": "Pet"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "PetCatalogModule_findPetById",
+        "description": "Invokes PetCatalogModule.findPetById",
+        "module": "PetCatalogModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "javaType": "String"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "PetCatalogModule_findPetsByStatus",
+        "description": "Invokes PetCatalogModule.findPetsByStatus",
+        "module": "PetCatalogModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "object",
+              "javaType": "PetStatus"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "PetCatalogModule_findAllPets",
+        "description": "Invokes PetCatalogModule.findAllPets",
+        "module": "PetCatalogModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "PetCatalogModule_updatePetStatus",
+        "description": "Invokes PetCatalogModule.updatePetStatus",
+        "module": "PetCatalogModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "petId": {
+              "type": "string",
+              "javaType": "String"
+            },
+            "status": {
+              "type": "object",
+              "javaType": "PetStatus"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "PetCatalogModule_removePet",
+        "description": "Invokes PetCatalogModule.removePet",
+        "module": "PetCatalogModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "javaType": "String"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "AppCoreModule_logAudit",
+        "description": "Invokes AppCoreModule.logAudit",
+        "module": "AppCoreModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "eventType": {
+              "type": "string",
+              "javaType": "String"
+            },
+            "sourceModule": {
+              "type": "string",
+              "javaType": "String"
+            },
+            "message": {
+              "type": "string",
+              "javaType": "String"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "AppCoreModule_findAuditLogById",
+        "description": "Invokes AppCoreModule.findAuditLogById",
+        "module": "AppCoreModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "javaType": "String"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "AppCoreModule_findAllAuditLogs",
+        "description": "Invokes AppCoreModule.findAllAuditLogs",
+        "module": "AppCoreModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "AppCoreModule_findAuditLogsByModule",
+        "description": "Invokes AppCoreModule.findAuditLogsByModule",
+        "module": "AppCoreModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "sourceModule": {
+              "type": "string",
+              "javaType": "String"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "AppCoreModule_executeActionGraph",
+        "description": "Invokes AppCoreModule.executeActionGraph",
+        "module": "AppCoreModule",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "graph": {
+              "type": "object",
+              "javaType": "ActionGraph"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

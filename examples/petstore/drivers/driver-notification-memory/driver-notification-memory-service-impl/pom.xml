@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>net.thevpc.samples.petstore</groupId>
+        <artifactId>driver-notification-memory-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>driver-notification-memory-service-impl</artifactId>
+    <name>Pyramid PetStore :: Driver Notification Memory Service Impl</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.thevpc.samples.petstore</groupId>
+            <artifactId>extension-notification-service-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>net.thevpc.samples.petstore</groupId>
+            <artifactId>driver-notification-memory-dal-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+    </dependencies>
+</project>

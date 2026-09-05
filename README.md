@@ -4,6 +4,7 @@ A modular, agile, and scalable software architecture pattern for modern products
 
 📄 [Read the Whitepaper](./the-pyramid-architecture-v1.0.pdf)  
 🎯 [Adoption Checklist](./docs/adoption-guide.md)  
+🚀 [Reference Implementation (PetStore)](./examples/petstore)  
 
 ## Who Is This For?
 

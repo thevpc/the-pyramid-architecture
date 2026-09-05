@@ -1,0 +1,4 @@
+net/thevpc/samples/petstore/core/service/impl/AppCoreModuleImpl.class
+net/thevpc/samples/petstore/core/actiongraph/ActionGraphDispatcher.class
+net/thevpc/samples/petstore/core/interceptor/impl/InterceptorRegistry.class
+net/thevpc/samples/petstore/core/interceptor/impl/InterceptorDispatcher.class

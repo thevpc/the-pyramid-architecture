@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>net.thevpc.samples.petstore</groupId>
+        <artifactId>petstore-modules</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>order-parent</artifactId>
+    <packaging>pom</packaging>
+    <name>Pyramid PetStore :: Module Order</name>
+
+    <modules>
+        <module>order-infra</module>
+        <module>order-dal-api</module>
+        <module>order-dal-jpa</module>
+        <module>order-service-api</module>
+        <module>order-service-impl</module>
+        <module>order-service-rest-cli</module>
+        <module>order-ws-rest</module>
+    </modules>
+</project>

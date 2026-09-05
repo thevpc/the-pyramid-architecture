@@ -1,0 +1,3 @@
+net/thevpc/samples/petstore/core/dal/jpa/repository/SpringDataAppAuditLogRepository.class
+net/thevpc/samples/petstore/core/dal/jpa/entity/JpaAppAuditLogEntity.class
+net/thevpc/samples/petstore/core/dal/jpa/repository/JpaAppAuditLogRepositoryImpl.class
